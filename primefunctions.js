@@ -1,3 +1,8 @@
+// Alberto Clara
+// CS320
+// prime functions
+
+
 function primeGen(n) {
   const array = [];
   for (let i = 2; i < n; i++) {
