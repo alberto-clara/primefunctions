@@ -24,36 +24,42 @@ function cumulativeSum(arr) {
   return total;
 }
 
-// function maxPrimeSum(array) {
-//   const limit = 1000000;
-//   const notPrime = new Uint8Array(limit);
-//   const primes = [];
-//
-//   notPrime[0] = notPrime[1] = 1;
-//
-//   for (let i = 2; i < limit; i++) {
-//     if (notPrime[i] === 0) {
-//       primes.push(i);
-//       for (let j = 2 * i; j < limit; j += i) {
-//         notPrime[j] = 1;
-//       }
-//     }
-//   }
-//   let maxSum = 0;
-//   let maxRun = -1;
-//   for (let i = 0; i < primes.length; i++) {
-//     let sum = 0;
-//     for (let j = i; j < primes.length; j++) {
-//       sum += primes[j];
-//       if (sum > limit) break;
-//       if (!notPrime[sum] && sum > maxSum && j - i > maxRun) {
-//         maxRun = j - i;
-//         maxSum = sum;
-//       }
-//     }
-//   }
-// }
+function isPrime(n) {
+  for (let x = 2; x < n; x++) if (n % x === 0) return false;
+  return n > 1;
+}
+
+function Sum(n) {
+  let sum = 0;
+  for (let i = 0; i < n.length; i++) sum += n[i];
+  return sum;
+}
+
+function maxPrimeSum(n) {
+  const List = primeGen(n);
+  let nMax = 0;
+  let lenMax = 0;
+  let temp;
+  let array = [];
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      array = List.slice(i, j);
+      temp = Sum(array);
+      if (nMax < temp) {
+        if (isPrime(temp) !== false) {
+          if (temp < n) {
+            if (array.length > lenMax) {
+              lenMax = array.length;
+              nMax = temp;
+            }
+          }
+        }
+      }
+    }
+  }
+  return [nMax, lenMax];
+}
 
 console.log(primeGen(10));
 console.log(cumulativeSum([1, 2, 3, 4]));
-// console.log(maxPrimeSum(100));
+console.log(maxPrimeSum(100));
