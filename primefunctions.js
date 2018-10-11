@@ -66,5 +66,8 @@ function maxPrimeSum(n) {
 }
 
 console.log(primeGen(10));
+console.log(primeGen(20));
 console.log(cumulativeSum([1, 2, 3, 4]));
+console.log(cumulativeSum([10, 11, 12, 13, 14]));
 console.log(maxPrimeSum(100));
+console.log(maxPrimeSum(1000));
