@@ -2,6 +2,8 @@
 // CS320
 // prime functions
 
+const foo = 'foo';
+console.log(foo);
 
 function primeGen(n) {
   const array = [];
